@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stored — Flames.Blue</title>
+  <style>body{font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;margin:0}.container{max-width:720px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08);padding:20px;margin:16px 0}</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Stored Payloads</h2>
+      <p>Raw rendering to simulate stored XSS.</p>
+      <ul>
+        {% for item in items %}
+          <li><code>{{ item.ts }}</code> — {{ item.src_ip }} — <span style="color:#0ea5e9">{{ item.payload|safe }}</span></li>
+        {% endfor %}
+      </ul>
+      <p><a href="/store">Add another</a></p>
+    </div>
+  </div>
+</body>
+</html>

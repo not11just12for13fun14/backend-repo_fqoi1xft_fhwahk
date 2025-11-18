@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload — Flames.Blue</title>
+  <style>body{font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;margin:0}.container{max-width:720px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08);padding:20px;margin:16px 0}</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Upload File</h2>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:8px">Upload</button>
+      </form>
+      {% if saved %}
+        <p>Saved as: <code>{{ saved.saved_path }}</code></p>
+        <ul>
+          <li>Original name: {{ saved.orig_name }}</li>
+          <li>Size: {{ saved.size }} bytes</li>
+          <li>SHA256: {{ saved.sha256 }}</li>
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

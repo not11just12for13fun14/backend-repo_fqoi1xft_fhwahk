@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reflect — Flames.Blue</title>
+  <style>body{font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;margin:0}.container{max-width:800px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08);padding:20px;margin:16px 0}</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Reflection</h2>
+      <form method="get">
+        <input name="q" placeholder="Enter text" style="padding:8px; width:70%">
+        <button style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:8px">Reflect</button>
+      </form>
+      <div style="margin-top:12px; border-top:1px solid #e2e8f0; padding-top:12px">
+        <!-- Intentionally unescaped to simulate reflected XSS -->
+        <div>Output: <span style="color:#0ea5e9">{{ reflected|safe }}</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

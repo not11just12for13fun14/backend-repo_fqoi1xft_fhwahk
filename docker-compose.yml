@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  flamesblue-honeypot:
+    build: .
+    image: flamesblue/honeypot:latest
+    container_name: flamesblue-honeypot
+    environment:
+      - PORT=8080
+      # Optional: forward JSON log lines to syslog (UDP)
+      # - SYSLOG_TARGET=192.0.2.10:514
+    # SAFETY: Prefer isolated networks. Consider removing ports mapping in real labs.
+    ports:
+      - "8080:8080"  # comment out to avoid exposing externally
+    read_only: true
+    tmpfs:
+      - /tmp
+    volumes:
+      - ./logs:/var/log/honeypot:rw
+      - quarantine:/opt/honeypot/quarantine:rw
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    networks:
+      - honeynet
+
+volumes:
+  quarantine:
+
+networks:
+  honeynet:
+    driver: bridge

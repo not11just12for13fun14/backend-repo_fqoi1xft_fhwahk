@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search — Flames.Blue</title>
+  <style>body{font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:#f8fafc;color:#0f172a;margin:0}.container{max-width:800px;margin:24px auto;padding:0 16px}.card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,0.08);padding:20px;margin:16px 0}</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Search</h2>
+      <form method="get">
+        <input name="q" value="{{ q }}" placeholder="Search..." style="padding:8px; width:70%">
+        <button style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:8px">Go</button>
+      </form>
+      {% if sqli_like %}
+      <p style="color:#b91c1c">Notice: Your query resembles SQL keywords. (simulation)</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h3>Results</h3>
+      <ul>
+        {% for r in results %}
+          <li>#{{ r.id }} — {{ r.title }} ({{ r.owner }})</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
